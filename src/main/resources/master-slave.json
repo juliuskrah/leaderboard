@@ -1,0 +1,22 @@
+{
+   "masterSlaveServersConfig":{
+      "subscriptionsPerConnection":5,
+      "clientName":"verification",
+      "masterAddress": "redis://172.28.153.59:6379",
+      "subscriptionConnectionMinimumIdleSize":1,
+      "subscriptionConnectionPoolSize":50,
+      "slaveConnectionMinimumIdleSize":32,
+      "slaveConnectionPoolSize":64,
+      "database":0,
+      "slaveAddresses":[
+         "redis://172.28.153.75:6379",
+         "redis://172.28.153.54:6379"
+      ]
+   },
+   "threads":2,
+   "nettyThreads":2,
+   "codec":{
+      "class":"org.redisson.codec.JsonJacksonCodec"
+   },
+   "transportMode":"NIO"
+}

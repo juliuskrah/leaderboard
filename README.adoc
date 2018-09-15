@@ -1,0 +1,7 @@
+= Leaderboard
+Simple Leaderboard application that records and displays the score of players.
+
+.Technology Stack
+* Spark Java
+* Redisson (Redis)
+* Guice

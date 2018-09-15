@@ -1,0 +1,20 @@
+{
+   "sentinelServersConfig":{
+      "subscriptionsPerConnection":5,
+      "clientName":"verification",
+      "subscriptionConnectionMinimumIdleSize":1,
+      "subscriptionConnectionPoolSize":50,
+	  "sentinelAddresses":[
+        "redis://172.28.153.54:26379",
+        "redis://172.28.153.59:26379",
+		"redis://172.28.153.75:26379"
+      ],
+      "masterName":"edi_dr"
+   },
+   "threads":2,
+   "nettyThreads":2,
+   "codec":{
+      "class":"org.redisson.codec.JsonJacksonCodec"
+   },
+   "transportMode":"NIO"
+}

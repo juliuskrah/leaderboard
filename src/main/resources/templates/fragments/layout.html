@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head th:fragment="header (title,links)">
+<meta charset="UTF-8">
+<title th:replace="${title}">Leaderboard :: Home</title>
+
+<!--/* Per-page placeholder for additional links */-->
+<th:block th:replace="${links}" />
+</head>
+<body>
+	<header th:fragment="menu">
+		Leaderboard: 
+		<a href="#" th:href="@{index}">Home</a> 
+		<a href="#"	th:href="@{login}">Login</a>
+	</header>
+</body>
+</html>
