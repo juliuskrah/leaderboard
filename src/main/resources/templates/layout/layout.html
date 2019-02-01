@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<meta charset="UTF-8">
+<title layout:title-pattern="$LAYOUT_TITLE :: $CONTENT_TITLE">Leaderboard</title>
+
+</head>
+<body>
+	<header>
+		Leaderboard: <a href="#" th:href="@{index}">Home</a> <a href="#"
+			th:href="@{login}">Login</a>
+	</header>
+	<div layout:fragment="content">
+		<p>Page content goes here</p>
+	</div>
+</body>
+</html>

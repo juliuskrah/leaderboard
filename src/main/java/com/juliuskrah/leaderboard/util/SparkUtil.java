@@ -1,5 +1,6 @@
 package com.juliuskrah.leaderboard.util;
 
+import nz.net.ultraq.thymeleaf.LayoutDialect;
 import spark.ModelAndView;
 import spark.template.thymeleaf.ThymeleafTemplateEngine;
 
@@ -15,6 +16,9 @@ public class SparkUtil {
 
 	private static class Helper {
 		private static final ThymeleafTemplateEngine INSTANCE = new ThymeleafTemplateEngine();
+		static {
+			INSTANCE.addThymeleafDialect(new LayoutDialect());
+		}
 	}
 
 	public static String render(ModelAndView model) {

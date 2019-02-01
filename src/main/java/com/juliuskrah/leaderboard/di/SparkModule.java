@@ -6,6 +6,7 @@ import javax.inject.Singleton;
 
 import org.redisson.Redisson;
 import org.redisson.api.RedissonClient;
+import org.redisson.api.RedissonReactiveClient;
 import org.redisson.config.Config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -43,10 +44,20 @@ public class SparkModule extends AbstractModule {
 	@Singleton
 	@CheckedProvides(RedissonProvider.class)
 	RedissonClient provideRedissonClient() throws IOException {
-		var stream = SparkModule.class.getClassLoader().getResourceAsStream("sentinel.json");
+		var stream = SparkModule.class.getClassLoader().getResourceAsStream("standalone.json");
 		try (stream) {
 			var config = Config.fromJSON(stream);
 			return Redisson.create(config);
+		}
+	}
+	
+	@Singleton
+	@CheckedProvides(RedissonProvider.class)
+	RedissonReactiveClient provideRedissonReactiveClient() throws IOException {
+		var stream = SparkModule.class.getClassLoader().getResourceAsStream("standalone.json");
+		try (stream) {
+			var config = Config.fromJSON(stream);
+			return Redisson.createReactive(config);
 		}
 	}
 }

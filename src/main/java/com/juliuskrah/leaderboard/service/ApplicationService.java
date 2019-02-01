@@ -22,6 +22,8 @@ public interface ApplicationService {
 	Object notFound(Request request, Response response);
 
 	Object welcome(Request request, Response response);
+	
+	Object login(Request request, Response response);
 
 	Object leaderBoards(Request request, Response response);
 

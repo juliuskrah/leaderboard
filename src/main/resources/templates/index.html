@@ -1,28 +1,31 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout/layout}">
 <head>
 <meta charset="UTF-8">
-<title>LeaderBoard :: List</title>
+<title>List</title>
 </head>
 <body>
-	<div th:replace="fragments/layout :: menu">This content will be replaced</div>
-	<table>
-		<thead>
-			<tr>
-				<th>Position</th>
-				<th>Score</th>
-				<th>Username</th>
-				<th>Other</th>
-			<tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td>1</td>
-				<td>2000</td>
-				<td>juliuskrah</td>
-				<td>Some</td>
-			</tr>
-		</tbody>
-	</table>
+	<div layout:fragment="content">
+		<table>
+			<thead>
+				<tr>
+					<th>Position</th>
+					<th>Score</th>
+					<th>Username</th>
+					<th>Other</th>
+				<tr>
+			</thead>
+			<tbody>
+				<tr th:each="user, iterStat : ${users}">
+					<td th:text="${iterStat.index}">1</td>
+					<td th:text="${user.key}">2000</td>
+					<td th:text="${user.value}">juliuskrah</td>
+					<td>Some</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
 </body>
 </html>

@@ -40,6 +40,8 @@ public class SparkRoutes implements Routes {
 		redirect.get("/", "/index");
 
 		get("/index", applicationService::welcome);
+		
+		get("/login", applicationService::login);
 
 		get("/leaderboard", applicationService::leaderBoards, mapper::writeValueAsString);
 

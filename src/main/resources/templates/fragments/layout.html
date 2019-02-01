@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html>
-<head th:fragment="header (title,links)">
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head (title,links)">
 <meta charset="UTF-8">
 <title th:replace="${title}">Leaderboard :: Home</title>
 
@@ -9,7 +9,7 @@
 </head>
 <body>
 	<header th:fragment="menu">
-		Leaderboard: 
+		Leaderboard:
 		<a href="#" th:href="@{index}">Home</a> 
 		<a href="#"	th:href="@{login}">Login</a>
 	</header>

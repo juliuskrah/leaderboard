@@ -13,6 +13,7 @@ import javax.inject.Singleton;
 
 import org.redisson.api.ExecutorOptions;
 import org.redisson.api.RedissonClient;
+import org.redisson.api.RedissonReactiveClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -38,18 +39,20 @@ import spark.Response;
 public class LeaderBoardApplicationService implements ApplicationService {
 	private static final Logger log = LoggerFactory.getLogger(LeaderBoardApplicationService.class);
 	private final RedissonProvider<RedissonClient> redissonProvider;
+	private final RedissonProvider<RedissonReactiveClient> redissonReactiveProvider;
 
 	@Inject
-	LeaderBoardApplicationService(RedissonProvider<RedissonClient> redissonProvider) {
+	LeaderBoardApplicationService(RedissonProvider<RedissonClient> redissonProvider,
+			RedissonProvider<RedissonReactiveClient> redissonReactiveProvider) {
 		this.redissonProvider = redissonProvider;
+		this.redissonReactiveProvider = redissonReactiveProvider;
 	}
 
 	/**
 	 * Delegates processing to a Redisson Node process for handling. <br/>
 	 * This method takes a Callable as parameter
 	 * 
-	 * @param task
-	 *            long running background task
+	 * @param task long running background task
 	 */
 	private <T> void processBackgroundTasks(Callable<T> task) {
 		try {
@@ -77,8 +80,7 @@ public class LeaderBoardApplicationService implements ApplicationService {
 	 * Delegates processing to a Redisson Node process for handling. <br/>
 	 * This method takes a Runnable as parameter
 	 * 
-	 * @param task
-	 *            long running background task
+	 * @param task long running background task
 	 */
 	private void processBackgroundTasks(Runnable task) {
 		try {
@@ -116,8 +118,16 @@ public class LeaderBoardApplicationService implements ApplicationService {
 	@Override
 	public Object welcome(Request request, Response response) {
 		Map<String, Object> model = new HashMap<>();
-		model.put("username", "juliuskrah");
+		model.put("users",
+				Map.of(23, "juliuskrah", 43, "deborahashley", 123, "peterquansah", 56, "jacobaggrey", 345, "ericaddo",
+						456, "jameswong", 432, "brucelee", 21, "victorayetey", 98, "karensmith", 344, "derrickkyle"));
 		return render(model, "index");
+	}
+	
+	@Override
+	public Object login(Request request, Response response) {
+		Map<String, Object> model = new HashMap<>();
+		return render(model, "login");
 	}
 
 	@Override
